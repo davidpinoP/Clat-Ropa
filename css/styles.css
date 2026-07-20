@@ -132,9 +132,9 @@ section { position: relative; }
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease);
-  white-space: nowrap;
   border: 1.5px solid transparent;
   min-height: 44px;
+  text-align: center;
 }
 .btn:active { transform: translateY(1px); }
 .btn svg { width: 19px; height: 19px; flex-shrink: 0; transition: transform 220ms var(--ease); }
@@ -305,6 +305,7 @@ body.menu-open { overflow: hidden; }
   gap: 44px;
   align-items: center;
 }
+.hero-grid > * { min-width: 0; }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.05fr 0.85fr; gap: 56px; } }
 
 .hero h1 { color: #fff; }
@@ -1062,7 +1063,10 @@ table.compare th.col-renting { background: var(--gold-500); color: var(--navy-90
   padding: 10px 14px;
   padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
-.mobile-cta-bar .btn { flex: 1; padding: 12px 14px; font-size: 0.9rem; }
+/* min-width:0 + wrap: without them the nowrap button text refuses to
+   shrink below its own content width and forces the whole bar (and page)
+   wider than very narrow viewports. */
+.mobile-cta-bar .btn { flex: 1; min-width: 0; padding: 12px 14px; font-size: 0.9rem; white-space: normal; line-height: 1.2; }
 @media (min-width: 1024px) { .mobile-cta-bar { display: none; } }
 
 /* ---------------------------------- Reveal animation ---------------------------------- */
@@ -1154,6 +1158,25 @@ table.compare th.col-renting { background: var(--gold-500); color: var(--navy-90
 .legal-content ul li { margin-bottom: 8px; }
 .legal-content strong { color: var(--navy-900); }
 .legal-updated { color: var(--ink-500); font-size: 0.88rem; margin-bottom: 32px; }
+
+/* ---------------------------------- Grid overflow guard ---------------------------------- */
+/* Grid items default to min-width:auto, which refuses to shrink below their
+   content's intrinsic width (e.g. a nowrap button, a long unbroken string).
+   On a single-column mobile layout that silently pushes the whole page wider
+   than the viewport. Applied blanket to every grid container on the site. */
+.stats-grid > *,
+.trust-bar ul > *,
+.sector-explorer > *,
+.reasons-bento > *,
+.service-grid > *,
+.steps-grid > *,
+.testimonial-grid > *,
+.cert-grid > *,
+.timeline-item > *,
+.facility-grid > *,
+.footer-grid > * {
+  min-width: 0;
+}
 
 /* ---------------------------------- Utilities ---------------------------------- */
 .mt-0 { margin-top: 0; }
