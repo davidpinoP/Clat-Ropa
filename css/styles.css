@@ -144,7 +144,7 @@ section { position: relative; }
 
 .section-head { max-width: 680px; margin-bottom: 44px; }
 .section-head.center { margin-inline: auto; text-align: center; }
-.section-head p { font-size: 1.05rem; margin-top: 14px; }
+.section-head p { font-size: 1.05rem; margin-top: 14px; max-width: 62ch; margin-inline: auto; }
 
 .text-lede { font-size: 1.15rem; color: var(--ink-70); }
 .muted { color: var(--ink-70); }
@@ -223,10 +223,13 @@ section { position: relative; }
 .main-nav ul { display: flex; align-items: center; gap: 6px; }
 .main-nav a {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 500;
   font-size: 0.95rem;
   color: var(--ink-70);
-  padding: 10px 14px;
+  padding: 0 14px;
   transition: color 180ms var(--ease);
 }
 .main-nav a::after {
@@ -706,11 +709,11 @@ body.menu-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--blue);
   margin-top: auto;
-  padding-block: 8px;
   cursor: pointer;
 }
 .service-card.is-dark .service-link { color: #fff; }
@@ -758,7 +761,10 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ---------------------------------- FAQ ---------------------------------- */
+/* max-width contenido (no solo el contenedor) para que la respuesta no
+   supere ~75 caracteres por línea en pantallas anchas. */
 .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin-inline: auto; }
+.faq-answer p { max-width: 68ch; }
 .faq-item {
   background: #fff;
   border: 1px solid var(--line);
@@ -997,7 +1003,7 @@ table.compare th.col-renting { background: var(--orange); color: var(--blue); }
 .footer-col h3 { color: #fff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-weight: 600; }
 .footer-col ul { display: flex; flex-direction: column; gap: 2px; }
 .footer-col a, .footer-col li { font-size: 0.92rem; color: var(--paper-70); }
-.footer-col a { display: inline-block; padding-block: 10px; margin-block: -10px; }
+.footer-col a { display: inline-block; padding-block: 12px; margin-block: -12px; }
 .footer-col a:hover { color: var(--orange); }
 .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
 .footer-contact-item svg { width: 18px; height: 18px; color: var(--orange); flex-shrink: 0; margin-top: 2px; }
@@ -1009,7 +1015,7 @@ table.compare th.col-renting { background: var(--orange); color: var(--blue); }
   font-size: 0.84rem;
 }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-.footer-legal a { display: inline-block; padding-block: 10px; margin-block: -10px; }
+.footer-legal a { display: inline-block; padding-block: 12px; margin-block: -12px; }
 .footer-legal a:hover { color: #fff; }
 
 /* ---------------------------------- Floating WhatsApp ---------------------------------- */
