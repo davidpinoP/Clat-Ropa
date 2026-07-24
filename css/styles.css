@@ -41,9 +41,9 @@
   --font-body: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --radius-sm: 3px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
   --radius-full: 999px;
 
   --shadow-float: 0 6px 20px rgba(10, 10, 10, 0.16);
@@ -90,38 +90,44 @@ button { font: inherit; color: inherit; background: none; border: 0; touch-actio
 ul { list-style: none; padding: 0; }
 input, textarea, select { font: inherit; color: inherit; }
 
-h1, h2 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 500;
   color: var(--blue);
   letter-spacing: -0.01em;
 }
-h1 em, h2 em {
+h1 em, h2 em, h3 em {
   font-style: italic;
   font-weight: 400;
   color: var(--gold-ink);
 }
-h3, h4 {
-  font-family: var(--font-body);
-  font-weight: 600;
-  color: var(--blue);
-}
 /* El titular respira: Fraunces a peso medio, sin mayúsculas, con mucho
-   aire — la voz distintiva de la página, usada con reserva (una o dos
-   frases). Todo lo demás habla en el mismo tono contenido. */
+   aire — la voz distintiva de la página, ahora también en los títulos
+   de tarjeta (h3), para que ningún rincón del sitio vuelva a hablar en
+   una tipografía neutra de plantilla. */
 h1 {
-  font-size: clamp(2.4rem, 4.6vw + 1rem, 4rem);
+  font-size: clamp(2.5rem, 4.8vw + 1rem, 4.25rem);
   font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 h2 {
-  font-size: clamp(1.9rem, 2.6vw + 1rem, 2.6rem);
-  line-height: 1.15;
+  font-size: clamp(1.95rem, 2.7vw + 1rem, 2.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
 }
-h3 { font-size: clamp(1.2rem, 1.1vw + 1rem, 1.4rem); line-height: 1.3; }
-h4 { font-size: 1.05rem; line-height: 1.3; }
+h3 { font-size: clamp(1.25rem, 1.2vw + 1rem, 1.45rem); font-weight: 500; line-height: 1.28; letter-spacing: -0.005em; }
+h4 { font-family: var(--font-body); font-weight: 600; color: var(--blue); font-size: 1.05rem; line-height: 1.3; letter-spacing: normal; }
+
+/* Excepción: las etiquetas en versalitas (footer, badges) hablan en la
+   voz neutra de cuerpo — un rótulo pequeño en serif itálico de marca
+   perdería legibilidad y coherencia con su propio tracking. */
+.footer-col h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+}
 
 p { color: var(--ink-70); }
 
@@ -367,6 +373,7 @@ body.menu-open { overflow: hidden; }
   position: relative;
   background: var(--white);
   border-top: 3px solid var(--orange);
+  border-radius: var(--radius-md);
   padding: 22px 24px;
   margin-top: -40px;
   margin-inline: 20px;
@@ -582,7 +589,7 @@ body.menu-open { overflow: hidden; }
 .sector-panel-item .check-list { margin-bottom: 28px; }
 
 /* ---------------------------------- Why CLAT / differentiators ---------------------------------- */
-.reasons-bento, .reasons-bento-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.reasons-bento, .reasons-bento-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 @media (min-width: 640px) { .reasons-bento, .reasons-bento-4 { grid-template-columns: repeat(4, 1fr); } }
 
 .reason-bento-card {
