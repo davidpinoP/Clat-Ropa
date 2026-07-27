@@ -305,7 +305,11 @@ section { position: relative; }
 }
 .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
 .mobile-menu ul { display: flex; flex-direction: column; gap: 2px; margin-bottom: 24px; }
-.mobile-menu a {
+/* :not(.btn) — el CTA de "Solicitar presupuesto" dentro del menú móvil
+   es también un <a>: sin esta exclusión, este color heredaba por encima
+   del texto blanco de .btn-primary y lo dejaba invisible (navy sobre
+   navy). */
+.mobile-menu a:not(.btn) {
   display: block;
   font-weight: 600;
   font-size: 1.1rem;
@@ -589,8 +593,11 @@ body.menu-open { overflow: hidden; }
 .sector-panel-item .check-list { margin-bottom: 28px; }
 
 /* ---------------------------------- Why CLAT / differentiators ---------------------------------- */
-.reasons-bento, .reasons-bento-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-@media (min-width: 640px) { .reasons-bento, .reasons-bento-4 { grid-template-columns: repeat(4, 1fr); } }
+/* Una sola columna en móvil: a dos columnas, el texto de cada tarjeta se
+   parte en líneas demasiado estrechas para leerse con comodidad. */
+.reasons-bento, .reasons-bento-4 { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+@media (min-width: 500px) { .reasons-bento, .reasons-bento-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 720px) { .reasons-bento, .reasons-bento-4 { grid-template-columns: repeat(4, 1fr); } }
 
 .reason-bento-card {
   position: relative;
